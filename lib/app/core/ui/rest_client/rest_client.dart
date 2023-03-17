@@ -1,14 +1,14 @@
 import 'package:get/get_connect.dart';
 
 class RestClient extends GetConnect {
-  final _backendBaseUrl = "http://dartweek.academiadoflutter.com.br";
+  final _backendBaseUrl = "http://192.168.15.7:8080";
   RestClient() {
     httpClient.baseUrl = _backendBaseUrl;
   }
 }
 
 class RestClientException implements Exception {
-  final int? code ;
+  final int? code;
   final String message;
   RestClientException(
     this.message, {

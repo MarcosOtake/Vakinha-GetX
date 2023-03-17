@@ -98,3 +98,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+
+  # Ver a versão do JSON_REST_SERVER ->  json_rest_server version
+  # Criar a pasta -------------------->  json_rest_server create ./backend
+  # Criar a pasta -------------------->  json_rest_server create ./backend
+  # Iniciar o JSON_REST_SERVER ------->  json_rest_server run
+  # Cancelar o JSON_REST_SERVER ------>  ctrl + c

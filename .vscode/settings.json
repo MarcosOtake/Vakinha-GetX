@@ -1,0 +1,13 @@
+{
+    "files.watcherExclude": {
+        "android/**": true,
+        "build/**": true,
+        "ios/**": true
+    },
+   // "workbench.tree.indent": 32,
+    "dart.flutterSdkPath": "/Users/marcosotake/Documents/workstation/bin/fvm/versions/3.0.5",
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.defaultFormatter": "Dart-Code.dart-code",
+    "editor.formatOnPaste": true,
+}
