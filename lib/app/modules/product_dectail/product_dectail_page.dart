@@ -27,10 +27,9 @@ class ProductDectailPage extends GetView<ProductDectailController> {
                   Container(
                     width: context.width,
                     height: context.heightTransformer(reducedBy: 60),
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: NetworkImage(
-                              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkRbhG2zioy_iNNWjCII0XT9YIb1q58qedH8hAwtuGqtkkP_8id5wez83DdleIjq4dQB4&usqp=CAU"),
+                          image: NetworkImage(controller.product.image),
                           fit: BoxFit.cover),
                     ),
                   ),
@@ -40,59 +39,55 @@ class ProductDectailPage extends GetView<ProductDectailController> {
                   Padding(
                     padding: const EdgeInsets.all(20),
                     child: Text(
-                      "X-TUDAO",
-                     // controller.product.name,
+                      controller.product.name,
                       style: context.textTheme.headline4!.copyWith(
                           color: Colors.black, fontWeight: FontWeight.bold),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 20),
-                    child: Text(
-                      "X-TUDAO", 
-                      // controller.product.description,
-                      style: context.textTheme.bodyText2!),
+                    child: Text(controller.product.description,
+                        style: context.textTheme.bodyText2!),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                   Obx(() { 
-                           return PlusMinusBox(
-                                       minusCallback: controller.removeProduct,
-                                       plusCallback:controller.addProduct ,
-                                       price: 6.00,
-                                       // price:controller.product.price,
-                                       quantity: controller.quantity,
-                   
-                                      );
-                       }
-                     ),
+                  Obx(() {
+                    return PlusMinusBox(
+                      minusCallback: controller.removeProduct,
+                      plusCallback: controller.addProduct,
+                      price: controller.product.price,
+                      quantity: controller.quantity,
+                    );
+                  }),
                   const Divider(),
                   ListTile(
-                    title: const Text(
-                      "Total",
-                      style: VakinhaUI.textBold,
-                    ),
-                    trailing:Obx(() { 
-                            return  Text(
-                                          FormatterHelper.formatCurrency(controller.totalPrice),
-                                          style: VakinhaUI.textBold,
-                                        );
-                        }
-                      )
-                  ),
+                      title: const Text(
+                        "Total",
+                        style: VakinhaUI.textBold,
+                      ),
+                      trailing: Obx(() {
+                        return Text(
+                          FormatterHelper.formatCurrency(controller.totalPrice),
+                          style: VakinhaUI.textBold,
+                        );
+                      })),
                   const SizedBox(
-                     height: 20,
+                    height: 20,
                   ),
                   Center(
-                      child: SizedBox(
-                    width: context.widthTransformer(reducedBy: 10),
-                    child: VakinhaButton(
-                      label:
-                      controller.alreadyAdded ? "ATUALIZAR" : "ADICIONAR",
-                      onPressed: controller.addProductInShoppingCard,
+                    child: SizedBox(
+                      width: context.widthTransformer(reducedBy: 10),
+                      child: VakinhaButton(
+                        label:
+                            controller.alreadyAdded ? "ATUALIZAR" : "ADICIONAR",
+                        onPressed: controller.addProductInShoppingCard,
+                      ),
                     ),
-                  ))
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  )
                 ],
               )),
         );

@@ -49,11 +49,10 @@
         },
         {
             "id": 2,
-            "name": "Porção de calabresa acebolada",
-            "description": "Calabresa frita com manteiga",
-            "price": 25.5,
-            "image": "https://www.perdigao.com.br/assets/_images/faa7d3c89c9a16bfaf0028e1b37c4afb0ab44fd2.jpg"
-        },
+            "name": "Hamburguer",
+            "description": "X-Tudo",
+            "price": 26.5,
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkRbhG2zioy_iNNWjCII0XT9YIb1q58qedH8hAwtuGqtkkP_8id5wez83DdleIjq4dQB4&usqp=CAU"} ,
         {
             "id": 3,
             "name": "Porção de calabresa acebolada",

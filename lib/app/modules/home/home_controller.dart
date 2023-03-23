@@ -18,7 +18,7 @@ class HomeController extends GetxController {
       : _shoppingCardService = shoppingCardService;
 
   int get tabIndex => _tabIndex.value;
-  int get totalProductsInShoppingCard => 0;
+  int get totalProductsInShoppingCard => _shoppingCardService.totalProducts;
 
   set tabIndex(int index) {
     _tabIndex(index);

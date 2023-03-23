@@ -1,3 +1,23 @@
 import 'package:get/get.dart';
 
-class ShoppingCardController extends GetxController {}
+import 'package:vakinha_burger_mobile/app/core/services/auth_service.dart';
+import 'package:vakinha_burger_mobile/app/core/services/shopping_card_service.dart';
+import 'package:vakinha_burger_mobile/app/models/shopping_caard_model.dart';
+
+class ShoppingCardController extends GetxController {
+  final AuthService _authService;
+  final ShoppingCardService _shoppingCardService;
+
+  final _address = "".obs;
+  final _cpf = "".obs;
+
+  ShoppingCardController({
+    required AuthService authService,
+    required ShoppingCardService shoppingCardService,
+  })  : _authService = authService,
+        _shoppingCardService = shoppingCardService;
+
+  List<ShoppingCaardModel> get products => _shoppingCardService.products;
+
+  double get totalValue => _shoppingCardService.totalValue;
+}

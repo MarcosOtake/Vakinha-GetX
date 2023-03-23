@@ -40,10 +40,12 @@ class PlusMinusBox extends StatelessWidget {
             children: [
               Visibility(
                 visible: label != null,
-                child: Text(
-                  label ?? "",
-                  style: const TextStyle(fontSize: 15),
-                  overflow: TextOverflow.ellipsis,
+                child: Expanded(
+                  child: Text(
+                    label ?? "",
+                    overflow: TextOverflow.fade,
+                    style: const TextStyle(fontSize: 15),
+                  ),
                 ),
               ),
               Row(
