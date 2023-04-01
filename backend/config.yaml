@@ -1,6 +1,7 @@
 name: Json Rest Server
 port: 8080
-host: 0.0.0.0
+# host: 0.0.0.0
+host: 192.168.15.7
 database: database.json
 
 auth:
@@ -9,8 +10,12 @@ auth:
   unauthorizedStatusCode: 401
   urlSkip:
     - /users:
-        method: get    
+       method: get    
     - /products:
-        method: get 
+       method: get 
     - /products/{*}:
-        method: get
+       method: get
+    - /user-register:
+       method: post
+    - /user-register:
+       method: get

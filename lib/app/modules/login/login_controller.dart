@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:vakinha_burger_mobile/app/core/constants/constants.dart';
@@ -29,8 +30,8 @@ class LoginController extends GetxController with LoaderMixin, MessagesMixin {
   Future<void> login({required String email, required String password}) async {
     try {
       _loading.toggle();
-      final userLogged = await _authRepository.login(email, password);
-
+      var userLogged = await _authRepository.login(email, password);
+      debugPrint(userLogged.id.toString());
       final storage = GetStorage();
       storage.write(Constants.USER_KEY, userLogged.id);
       _loading.toggle();

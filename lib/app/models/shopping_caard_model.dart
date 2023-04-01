@@ -1,10 +1,9 @@
-
 import 'product_model.dart';
 
-class ShoppingCaardModel {
+class ShoppingCardModel {
   int quantity;
   ProductModel product;
-  ShoppingCaardModel({
+  ShoppingCardModel({
     required this.quantity,
     required this.product,
   });

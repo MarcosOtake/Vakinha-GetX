@@ -11,13 +11,13 @@ class AuthService extends GetxService {
       _isLogged(value != null);
     });
     ever<bool?>(_isLogged, (isLogged) {
-      if (isLogged == null || !isLogged) {
+      if (isLogged == true) {
         Get.offAllNamed("/home");
       } else {
         Get.offAllNamed("/auth/login");
       }
     });
-    _isLogged(getUserId()!= null);
+    _isLogged(getUserId() != null);
     return this;
   }
 
