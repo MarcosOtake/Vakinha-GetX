@@ -1,6 +1,7 @@
 name: Json Rest Server
 port: 8080
-host: 0.0.0.0
+# host: 192.168.0.105
+host: 192.168.0.104
 database: database.json
 
 auth:
@@ -14,3 +15,11 @@ auth:
         method: get 
     - /products/{*}:
         method: get
+    - /user-register:
+        method: get     
+    - /user-register:
+        method: post      
+    - /order:
+        method: get   
+    - /order:
+        method: post        

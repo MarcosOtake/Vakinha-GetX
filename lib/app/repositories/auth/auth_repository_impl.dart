@@ -15,7 +15,7 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<UserModel> register(String name, String email, String password) async {
-    final result = await _restClient.post("/auth/register", {
+    final result = await _restClient.post("/user-register", {
       "name": name,
       "email": email,
       "password": password,
@@ -37,25 +37,28 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<UserModel> login(String email, String password) async {
-    final result = await _restClient
-    .post("/auth/",{
-      "email":email,
-      "password":password,
-    });
-    if(result.hasError){
-      if(result.statusCode == 403){
-        log("Usuario ou senha invalidos",
-        error: result.statusText,
-        stackTrace: StackTrace.current
-        );
-        throw UserNotFoundException();
+    final result = await _restClient.get("/user-register");
+    
+      late UserModel userExist;
+
+      if (result.hasError) {
+        if (result.statusCode == 403) {
+          log("Usuario ou senha invalidos",
+              error: result.statusText, stackTrace: StackTrace.current);
+          throw UserNotFoundException();
+        }
+        log("Erro ao autenticar o usuario(${result.statusCode}) ",
+            error: result.statusText, stackTrace: StackTrace.current);
+        throw RestClientException("Erro ao autenticar usuario");
       }
-      log("Erro ao autenticar o usuario(${result.statusCode}) ",
-      error: result.statusText,
-      stackTrace: StackTrace.current
-      );
-      throw RestClientException("Erro ao autenticar usuario");
+      final resultUser = result.body.map((e) => UserModel.fromMap(e));
+      if (resultUser != null) {
+        userExist = resultUser
+            .where((element) =>
+                element.email == email && element.password == password)
+            .first;
+      }
+      return userExist;
     }
-    return UserModel.fromMap(result.body);
   }
-}
+

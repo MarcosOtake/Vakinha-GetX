@@ -31,11 +31,12 @@ class RegisterController extends GetxController
     required String email,
     required String password,
   }) async {
+    final storage = GetStorage();
     try {
       _loading.toggle();
       final userLogged = await _authRepository.register(name, email, password);
       _loading.toggle();
-      GetStorage().write(Constants.USER_KEY, userLogged.id);
+      await storage.write(Constants.USER_KEY, userLogged.id);
     } on RestClientException catch (e, s) {
       _loading.toggle();
       log("Erro ao registrar usuario ", error: e, stackTrace: s);
