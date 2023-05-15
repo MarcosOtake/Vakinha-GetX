@@ -17,7 +17,11 @@ class ShoppingCardController extends GetxController {
   })  : _authService = authService,
         _shoppingCardService = shoppingCardService;
 
-  List<ShoppingCardModel> get products => _shoppingCardService.products;
+  List<ShoppingCardModel> get products => _shoppingCardService.products.obs;
 
   double get totalValue => _shoppingCardService.totalValue;
+
+  clearProducts() {
+    _shoppingCardService.cleanTeste();
+  }
 }

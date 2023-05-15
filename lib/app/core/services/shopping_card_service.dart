@@ -19,6 +19,12 @@ class ShoppingCardService extends GetxService {
     });
   }
 
+  cleanTeste() {
+    _shoppingCard.clear();
+
+    return products;
+  }
+
   void addAndRemoveProductInShoppingCard(
     ProductModel product, {
     required int quantity,

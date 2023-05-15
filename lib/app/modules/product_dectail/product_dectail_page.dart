@@ -26,7 +26,7 @@ class ProductDectailPage extends GetView<ProductDectailController> {
                 children: [
                   Container(
                     width: context.width,
-                    height: context.heightTransformer(reducedBy: 60),
+                    height: context.heightTransformer(reducedBy: 65),
                     decoration: BoxDecoration(
                       image: DecorationImage(
                           image: NetworkImage(controller.product.image),
