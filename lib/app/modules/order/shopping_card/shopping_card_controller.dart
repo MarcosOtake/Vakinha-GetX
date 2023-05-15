@@ -39,7 +39,7 @@ class ShoppingCardController extends GetxController {
     );
   }
 
-  void clear() => _shoppingCardService.clear();
+  // void clear() => _shoppingCardService.clear();
 
   Future<void> createOrder() async {
     final userId = _authService.getUserId();
@@ -49,10 +49,10 @@ class ShoppingCardController extends GetxController {
       address: _address.value,
       itens: products,
     );
-    var orderPix = await _orderRepository.createOrder(order);
-    orderPix = orderPix.copyWith(totalValue: totalValue);
+    // var orderPix = await _orderRepository.createOrder(order);
+    // orderPix = orderPix.copyWith(totalValue: totalValue);
 
-    Get.offNamed("/orders/finished", arguments: orderPix);
+    //  Get.offNamed("/orders/finished", arguments: orderPix);
     Get.back(id: HomeController.NAVIGATOR_KEY);
   }
 }

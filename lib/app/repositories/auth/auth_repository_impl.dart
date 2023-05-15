@@ -1,8 +1,6 @@
 import 'dart:developer';
-
 import 'package:vakinha_burger_mobile/app/core/ui/rest_client/rest_client.dart';
 import 'package:vakinha_burger_mobile/app/models/user_model.dart';
-
 import '../../core/exceptions/user_notfound_exception.dart';
 import 'auth_repository.dart';
 
@@ -38,27 +36,26 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<UserModel> login(String email, String password) async {
     final result = await _restClient.get("/user-register");
-    
-      late UserModel userExist;
 
-      if (result.hasError) {
-        if (result.statusCode == 403) {
-          log("Usuario ou senha invalidos",
-              error: result.statusText, stackTrace: StackTrace.current);
-          throw UserNotFoundException();
-        }
-        log("Erro ao autenticar o usuario(${result.statusCode}) ",
+    late UserModel userExist;
+
+    if (result.hasError) {
+      if (result.statusCode == 403) {
+        log("Usuario ou senha invalidos",
             error: result.statusText, stackTrace: StackTrace.current);
-        throw RestClientException("Erro ao autenticar usuario");
+        throw UserNotFoundException();
       }
-      final resultUser = result.body.map((e) => UserModel.fromMap(e));
-      if (resultUser != null) {
-        userExist = resultUser
-            .where((element) =>
-                element.email == email && element.password == password)
-            .first;
-      }
-      return userExist;
+      log("Erro ao autenticar o usuario(${result.statusCode}) ",
+          error: result.statusText, stackTrace: StackTrace.current);
+      throw RestClientException("Erro ao autenticar usuario");
     }
+    final resultUser = result.body.map((e) => UserModel.fromMap(e));
+    if (resultUser != null) {
+      userExist = resultUser
+          .where((element) =>
+              element.email == email && element.password == password)
+          .first;
+    }
+    return userExist;
   }
-
+}
